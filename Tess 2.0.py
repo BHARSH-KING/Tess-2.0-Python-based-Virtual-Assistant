@@ -191,16 +191,16 @@ def respond(voice_data):
     if there_exists(["plus", "minus", "multiply", "divide", "power", "+", "-", "*", "/"]):
         opr = voice_data.split()[1]
 
-        if opr == ('+', 'add', 'addition'):
+        if opr == '+':
             engine_speak(int(voice_data.split()[0]) + int(voice_data.split()[2]))
 
-        elif opr == ('-', 'subtract', 'minus'):
+        elif opr == '-':
             engine_speak(int(voice_data.split()[0]) - int(voice_data.split()[2]))
-        elif opr == ('multiply', 'into','multiplied'):
+        elif opr == 'multiply':
             engine_speak(int(voice_data.split()[0]) * int(voice_data.split()[2]))
-        elif opr == ('divide', 'divided', 'by'):
+        elif opr == 'divide':
             engine_speak(int(voice_data.split()[0]) / int(voice_data.split()[2]))
-        elif opr == ('power', 'to the power', 'raised to'):
+        elif opr == 'power':
             engine_speak(int(voice_data.split()[0]) ** int(voice_data.split()[2]))
         else:
             engine_speak("Wrong Operator")
