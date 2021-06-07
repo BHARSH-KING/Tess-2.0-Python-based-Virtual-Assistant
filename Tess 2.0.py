@@ -113,7 +113,7 @@ def respond(voice_data):
 
 # Search on amazon
     if there_exists(["amazon"]):
-        search_term = voice_data.split("on amazon")[-1]
+        search_term = voice_data.replace('on amazon', '')
         url = "https://www.amazon.in/" + search_term
         webbrowser.get().open(url)
         engine_speak("here is what i found for" + search_term + "on amazon.com")
