@@ -10,6 +10,8 @@ import pyttsx3
 import pywhatkit
 import datetime
 import wikipedia
+import subprocess
+import operator
 
 class person:
     name = ''
@@ -139,6 +141,13 @@ def respond(voice_data):
         webbrowser.get().open(url)
         engine_speak("Opening Whatsapp")
 
+# Let's open twitter
+    if there_exists(["open twiiter", "twitter"]):
+        search_term = voice_data.split("for")[-1]
+        url = "https://twitter.com/"
+        webbrowser.get().open(url)
+        engine_speak("Opening Twitter")
+
 # Weather
     if there_exists(["weather", "tell me the weather report", "whats the condition outside"]):
         search_term = voice_data.split("for")[-1]
@@ -157,54 +166,34 @@ def respond(voice_data):
 
     if there_exists(["game"]):
         voice_data = record_audio("choose among rock paper or scissor")
-        moves = ["rock", "paper", "scissor"]
+        moves = ["rock", "paper", "scissor, scissors"]
 
         cmove = random.choice(moves)
         pmove = voice_data
 
-        engine_speak("The computer chose " + cmove)
+        engine_speak("I chose " + cmove)
         engine_speak("You chose " + pmove)
 
         if pmove == cmove:
-            engine_speak("the match is draw")
+            engine_speak("the match is draw, boring")
         elif pmove == "rock" and cmove == "scissor":
-            engine_speak("You win")
+            engine_speak("You won")
         elif pmove == "rock" and cmove == "paper":
-            engine_speak("I won")
+            engine_speak("I won, yeah")
         elif pmove == "paper" and cmove == "rock":
-            engine_speak("you win")
+            engine_speak("you won")
         elif pmove == "paper" and cmove == "scissor":
-            engine_speak("I won")
+            engine_speak("I won, yeah")
         elif pmove == "scissor" and cmove == "paper":
-            engine_speak("You win")
+            engine_speak("You won")
         elif pmove == "scissor" and cmove == "rock":
-            engine_speak("I won")
+            engine_speak("I won, yeah")
 
 #  Toss a coin
     if there_exists(["toss", "flip", "coin"]):
         moves = ["head", "tails"]
         cmove = random.choice(moves)
         engine_speak("The computer chose " + cmove)
-
-
-# Tess Calculate
-    if there_exists(["plus", "minus", "multiply", "divide", "power", "+", "-", "*", "/"]):
-        opr = voice_data.split()[1]
-
-        if opr == '+':
-            engine_speak(int(voice_data.split()[0]) + int(voice_data.split()[2]))
-
-        elif opr == '-':
-            engine_speak(int(voice_data.split()[0]) - int(voice_data.split()[2]))
-        elif opr == 'multiply':
-            engine_speak(int(voice_data.split()[0]) * int(voice_data.split()[2]))
-        elif opr == 'divide':
-            engine_speak(int(voice_data.split()[0]) / int(voice_data.split()[2]))
-        elif opr == 'power':
-            engine_speak(int(voice_data.split()[0]) ** int(voice_data.split()[2]))
-        else:
-            engine_speak("Wrong Operator")
-
 
 # YouTube for Music
     if 'play' in voice_data:
@@ -247,12 +236,42 @@ def respond(voice_data):
 
     elif 'explain me your code' in voice_data:
         engine_speak("It's very simple, all the modules when combine together help me to speak and answer your questions and if i could use neural machine learning I would learn on my own")
-        
+
+    elif 'leader' in voice_data:
+        engine_speak("It's Shiva. Everyone knows that")
+
+    elif ('scripted you') in voice_data:
+        engine_speak("It was B harsh.")
+
+    elif ('coded you') in voice_data:
+        engine_speak("It was B harsh.")
+
+    elif ('program you') in voice_data:
+        engine_speak("It was B harsh.")
+
+# Tess Calculate
+    if there_exists(["plus", "minus", "multiply", "divide", "power", "+", "-", "*", "/",]):
+        opr = voice_data.split()[1]
+
+        if opr == '+':
+            engine_speak(int(voice_data.split()[0]) + int(voice_data.split()[2]))
+        elif opr == '-':
+            engine_speak(int(voice_data.split()[0]) - int(voice_data.split()[2]))
+        elif opr == 'multiply':
+            engine_speak(int(voice_data.split()[0]) * int(voice_data.split()[2]))
+        elif opr == 'divide':
+            engine_speak(int(voice_data.split()[0]) / int(voice_data.split()[2]))
+        elif opr == 'power':
+            engine_speak(int(voice_data.split()[0]) ** int(voice_data.split()[2]))
+        else:
+            engine_speak("Try Again")
+
+
 
 # End Comes
 
     if there_exists(["exit", "quit", "goodbye", "close", "shut"]):
-        engine_speak("Bye    Sir")
+        engine_speak("kudo's. Have a good day" + person_obj.name)
         exit()
 
 
