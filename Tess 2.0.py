@@ -10,8 +10,7 @@ import pyttsx3
 import pywhatkit
 import datetime
 import wikipedia
-import subprocess
-import operator
+
 
 class person:
     name = ''
@@ -166,7 +165,7 @@ def respond(voice_data):
 
     if there_exists(["game"]):
         voice_data = record_audio("choose among rock paper or scissor")
-        moves = ["rock", "paper", "scissor, scissors"]
+        moves = ["rock", "paper", "scissor"]
 
         cmove = random.choice(moves)
         pmove = voice_data
@@ -270,7 +269,7 @@ def respond(voice_data):
 
 # End Comes
 
-    if there_exists(["exit", "quit", "goodbye", "close", "shut"]):
+    if there_exists(["exit", "quit", "goodbye", "close", "shut", "bye"]):
         engine_speak("kudo's. Have a good day" + person_obj.name)
         exit()
 
